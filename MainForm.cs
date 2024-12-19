@@ -55,11 +55,9 @@ namespace TicTacToe
             for (int i = 0; i <= DimensionOfGrid; i++)
             {     
                 g.DrawLine(p, i*step, 0, i * step, CanvasHeight);
+                g.DrawLine(p, 0, i * step, CanvasWidth, i * step);
             }
-            for (int i = 0; i <= DimensionOfGrid; i++)
-            {
-                g.DrawLine(p, 0, i*step, CanvasWidth, i * step);
-            }
+            
         }
 
         public void DrawSymbol(string TargetSymbol, Point TargetCoord)
