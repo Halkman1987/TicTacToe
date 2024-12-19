@@ -79,6 +79,7 @@ namespace TicTacToe
         {
             if (TargetSymbol == "X")
             {
+                
                 //рисование крестика
             }
             else if (TargetSymbol == "O")
