@@ -35,7 +35,6 @@ namespace TicTacToe
             CanvasHeight = Canvas_pbox.Height;
             g = Canvas_pbox.CreateGraphics();
             NM = new NormalizeMethods(DimensionOfGrid);
-
         }
 
         public void RefreshCanvas()
@@ -45,33 +44,21 @@ namespace TicTacToe
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                     BufferGrid[i, j] = "-";
-
         }
 
         public void DrawGrid()
         {
             //Рисуй сетку тут
-            int stepW = CanvasWidth / 10;
-            int stepH = CanvasHeight / 10;
-            int countW = CanvasWidth / stepW;
-            int countH = CanvasHeight / stepH;
-            int buffposX = 0;
-            int buffposY = 0;
-            int buffposX1 = 0;
-            int buffposY1 = 0;
-            int buffposNull = 0;
+            int step = CanvasWidth / DimensionOfGrid;
             g = Canvas_pbox .CreateGraphics();
             Pen p = new Pen(Color.Black,2);
-            for (int i = 0; i <= countW; i++) //разлиновка поля
-            {
-                g.DrawLine(p, buffposX, buffposY, buffposX, CanvasHeight);
-                buffposX += stepW;
+            for (int i = 0; i <= DimensionOfGrid; i++)
+            {     
+                g.DrawLine(p, i*step, 0, i * step, CanvasHeight);
             }
-            for (int i = 0; i <= countH; i++)
+            for (int i = 0; i <= DimensionOfGrid; i++)
             {
-                g.DrawLine(p, buffposNull, buffposY1, CanvasWidth, buffposX1);
-                buffposY1 += stepH;
-                buffposX1 += stepH;
+                g.DrawLine(p, 0, i*step, CanvasWidth, i * step);
             }
         }
 
