@@ -64,12 +64,38 @@ namespace TicTacToe
         {
             if (TargetSymbol == "X")
             {
+                int step = CanvasWidth / DimensionOfGrid;
+                int bufX = TargetCoord.X / step; //количество целых ячеек
+                int bufY = TargetCoord.Y / step;
+
+                int coordinataX1 = bufX * step;//верхняя левая
+                int coordinataY1 = bufY * step;
+
+                int coordinataX2 = bufX * step + step;//верхняя правая
+                int coordinataY2 = bufY * step;
+
+                int coordinataX3 = bufX * step;//верхняя правая
+                int coordinataY3 = bufY * step + step;
+
+                int coordinataX4 = bufX * step + step;//нижняя правая
+                int coordinataY4 = bufY * step + step;
+                g = Canvas_pbox.CreateGraphics();
+                Pen pn = new Pen(Color.Blue, 3);
+                g.DrawLine(pn, coordinataX1, coordinataY1, coordinataX4, coordinataY4);
+                g.DrawLine(pn, coordinataX3, coordinataY3, coordinataX2, coordinataY2);
                 
-                //рисование крестика
             }
             else if (TargetSymbol == "O")
             {
                 //рисоваание нолика
+                int step = CanvasWidth / DimensionOfGrid;
+                int bufX = TargetCoord.X / step; 
+                int bufY = TargetCoord.Y / step;
+                int coordinataX = bufX * step + (step / 2);
+                int coordinataY = bufY * step + (step / 2);
+                g = Canvas_pbox.CreateGraphics();
+                Pen pn = new Pen(Color.Red, 3);
+                g.DrawEllipse(pn, coordinataX - 17, coordinataY - 17, 34, 34);
             }
 
             WinDetect(TargetSymbol);
